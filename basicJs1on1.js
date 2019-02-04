@@ -46,7 +46,7 @@ const BOOK_LIST = [
   console.log(LIBRARY_NAME);
   console.log(myBooks);
   
-  const createBook = (name, author, pages, isRead = 'false') => {
+  const createBook = (name, author, pages, isRead = false) => {
       return {
           name,
           author, 
@@ -54,9 +54,14 @@ const BOOK_LIST = [
           isRead
       }
   };
-   myBooks = createBook()
 
-   const populateBook = () => {
-
+   const populateBook = publicationList => {
+    publicationList.forEach( (item) => {
+    if (item[0] && item[1] && item[2]) {
+        myBooks.push(createBook (...item))
+    }    
+    });
    };
+populateBook(BOOK_LIST)
+console.log(myBooks)
   
